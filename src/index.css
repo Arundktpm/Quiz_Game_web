@@ -6,7 +6,6 @@
     --font-coinly:"Coiny", system-ui;
     --breakpoint-low:21.875rem;
 }
-
 .inputCompon {
     @apply p-2 cursor-pointer content-center hover:bg-opt-bord block rounded-md h-full;
     font-size: 15px;
