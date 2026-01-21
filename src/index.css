@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+    --color-opt-bord: #629FAD;
+    --color-quiz: oklch(0.21 0.06 245.78 / 0.91);
+    --font-coinly:"Coiny", system-ui;
+    --breakpoint-low:21.875rem;
+}
+
+.inputCompon {
+    @apply p-2 cursor-pointer content-center hover:bg-opt-bord block rounded-md h-full;
+    font-size: 15px;
+    font-weight: 500;
+}
+.correct-answer {
+    background-color: #4ade80 !important;
+    border-color: #22c55e !important;
+}
+.wrong-answer {
+    background-color: #f87171 !important;
+    border-color: #ef4444 !important;
+}
+
+@layer components {
+    .btn {
+        @apply bg-blue-500 px-7 py-3 rounded-md font-medium text-lg text-white cursor-pointer transition-colors duration-400 hover:bg-blue-600 shadow-lg;
+    }
+    .loading {
+        @apply w-auto bg-gray-700/70 border-none animate-pulse rounded-md;
+        pointer-events: none;
+        color: transparent !important;
+    }
+    .errorMsg {
+        @apply text-red-500 cursor-progress text-lg font-bold p-5;
+    }
+    .option {
+        @apply border border-opt-bord m-1 rounded-md;
+    }
+}

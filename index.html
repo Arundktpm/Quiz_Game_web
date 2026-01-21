@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <meta name="description" content="Test your computer science knowledge with our interactive quiz game!
+     Track your progress, earn scores, and level up your CS expertise one question at a time.">
+     <meta name="keywords" content="Quiz game,Quiz app,api based game,computer science game,modern game,modern quiz game,QuizGames Tailwind project">
+     <meta name="author" content="Arun D. B.E">
+    <link rel="stylesheet" href="./src/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-[url(/Assets/quiz_bg.jpg)] bg-no-repeat bg-cover bg-center md:bg-bottom bg-fixed flex flex-col
+ items-center text-center h-screen  justify-end sm:justify-center overflow-clip select-none">
+ <!-- //HiScore and level,mode Selection  -->
+    <section class="w-screen  h-max mt-2 justify-between fixed inset-0 gap-3 px-4 flex flex-col sm:flex-row">
+        <div
+            class="h-4/5  md:w-max content-center text-center p-2 bg-blue-400/20 backdrop-blur-lg rounded-md px-2.5 text-md text-white flex flex-col justify-center">
+            <div class="flex justify-center">
+                <h2 class="font-medium text-center">HighScore :</h2>
+                <b class="pr-1.5 text-green-500 text-sm pt-[3px] pl-1.5"><span>Easy:</span> <span id="Escore">0</span></b>
+                <b class="pr-1.5 text-green-500 text-sm pt-[3px]"><span>Medium:</span> <span id="Mscore">0</span></b>
+                <b class="pr-1.5 text-green-500 text-sm pt-[3px]"><span>Hard:</span> <span id="Hscore">0</span></b>
+            </div>
+            <div class="flex justify-center">
+                <h2 class="font-medium text-center">Up Time :</h2>
+                <time class="time pt-[1px] pl-1.5 text-md text-green-500 font-medium"> 00 : 00 : 00</time>
+                <img src="./Assets/hourglass.gif" alt="time" class="h-6 w-6 rounded-full mt-[1px] ml-1">
+            </div>
+        </div>
+        <div
+            class="h-4/5 content-center flex items-center justify-center gap-x-2 bg-blue-400/20 backdrop-blur-lg rounded-md px-2.5">
+            <img src="./Assets/level.gif" alt="levels" class="h-6 w-6 rounded-full">
+            <span class="py-1 mr-2.5 text-md font-medium text-white">Level<bdi id="level" class="px-1">1</bdi></span>
+            <span class="flex">
+                <img src="./Assets/settings.gif" alt="setting image" class="h-6 w-6 rounded-full">
+                <select id="Mode" class="outline-0  font-medium text-md text-slate-900 cursor-pointer ">
+                    <option value="easy" class="p-1.5 outline-0 ">Easy</option>
+                    <option value="medium" class="p-1.5 outline-0 ">Medium</option>
+                    <option value="hard" class="p-1.5 outline-0 ">Hard</option>
+                </select>
+            </span>
+        </div>
+    </section>
+    <!-- main Quiz container -->
+    <section
+        class="h-[67%] low:h-[73%] sm:h-auto overflow-auto m-2.5 p-2 backdrop-blur-lg shadow-[0_0_10px_rgba(0,0,0,0.4)] rounded-md w-[95%] md:w-xl content-center"
+        id="quiz">
+        <!-- question container box-->
+        <div class="p-1 pb-3 sm:p-5 text-white">
+            <h3 id="question" class="loading text-lg font-bold pb-3 text-quiz">question text</h3>
+            <ul class="grid sm:grid-cols-2">
+                <li class="loading option">
+                    <label class="inputCompon"><input type="radio" name="answer" id="a" class="hidden">
+                        <span id="a_text" class="pointer-events-none">answer1</span></label>
+                </li>
+                <li class="loading option">
+                    <label class="inputCompon">
+                        <input type="radio" name="answer" id="b" class="hidden">
+                        <span id="b_text" class="pointer-events-none">answer2</span>
+                    </label>
+                </li>
+                <li class="loading option">
+                    <label class="inputCompon">
+                        <input type="radio" name="answer" id="c" class="hidden">
+                        <span id="c_text" class="pointer-events-none">answer3</span>
+                    </label>
+                </li>
+                <li class="loading option">
+                    <label class="inputCompon">
+                        <input type="radio" name="answer" id="d" class="hidden">
+                        <span id="d_text" class="pointer-events-none">answer4</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <button id="submit" class="loading btn mb-2.5">Submit</button>
+    </section>
+<!-- //App info and Version -->
+<div class="model fixed inset-0 w-full h-full bg-gray-400/70 flex justify-center items-center z-4 transition-all duration-300 opacity-0 scale-10 hidden" >  
+    <div class="bg-white p-5 max-w-[320px] w-full rounded-lg">
+          <h2 class="text-xl font-bold pb-2 bg-gray-300 rounded-sm">App info</h2>
+          <ul>
+            <li>
+              <strong>Version:</strong>
+              <span class="text-md italic">1.0.0</span>
+            </li>
+            <li>
+              <strong>Publish:</strong>
+              <span class="text-md italic">21 Jan 2026</span>
+            </li>
+            <li>
+              <strong>Last Update:</strong>
+              <span class="text-md italic">21 Jan 2026</span>
+            </li>
+            <li>
+              <strong>Created by:</strong>
+              <a href="https://www.linkedin.com/in/arun-d-783a42323/" target="_black" class="text-md italic hover:text-blue-700">Arun D.</a>
+            </li>
+          </ul>
+          <button class="close bg-gray-300 cursor-pointer px-5 py-1 rounded-md mt-2 font-medium">Ok</button>
+        </div>
+      </div>
+ <!-- app info btn    -->
+<button class="fixed bottom-5 right-5 size-6 flex items-center justify-center rounded-full  bg-gray-400 cursor-pointer">
+  <span class="text-2xl pb-0.5" id="info" title="info">ⓘ</span>
+</button>
+    <!-- script is added -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
